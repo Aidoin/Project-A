@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 5bb8237ce34700743977a457f5a35498
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - vagonn: {fileID: 1560911563555063595, guid: 7c4a55ebe07fd074daf0b991b1eb1d86,
+      type: 3}
+  - trig_move: {fileID: 7323935994458093374, guid: 15e9f8456cf183a4aabfe2871207eb82,
+      type: 3}
+  - trig_on: {fileID: 1428695030584064279, guid: 7e07b9a88370daf41b3e55ad958a9d3c,
+      type: 3}
+  - trig_of: {fileID: 4287063366370545793, guid: f4f2fbed03a8ae949b48fb499611e1a3,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
