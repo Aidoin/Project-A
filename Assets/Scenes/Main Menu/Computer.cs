@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Computer : MonoBehaviour
@@ -8,6 +9,14 @@ public class Computer : MonoBehaviour
     public GameObject windowPlayGame;
     public GameObject windowSettings;
     public GameObject windowExit;
+
+    private void Start()
+    {
+        if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
+        }
+    }
 
     private void Update()
     {

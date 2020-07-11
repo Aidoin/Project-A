@@ -9,10 +9,12 @@ ScriptsOnlyBuild:
     - GraphicSettings
     - Inventory
     - Item
-    - LevelLoad
+    - KeyboardAndMouseSettings
     - PauseMenu
     - PlayerController
+    - SaveLoad
     - Settings
+    - SettingsBottonController
     - Vagon_triger_down
     - Vagon_triger_of_down
     - Vagon_triger_of_up
@@ -94,55 +96,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11200}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11408}
     - Class: 114
-      Script: {instanceID: 11454}
+      Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11518}
+      Script: {instanceID: 11520}
     - Class: 114
-      Script: {instanceID: 11524}
+      Script: {instanceID: 11526}
     - Class: 114
-      Script: {instanceID: 11918}
+      Script: {instanceID: 11920}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 12024}
+      Script: {instanceID: 12026}
     - Class: 114
-      Script: {instanceID: 12032}
+      Script: {instanceID: 12034}
     - Class: 114
-      Script: {instanceID: 12134}
+      Script: {instanceID: 12138}
     - Class: 114
-      Script: {instanceID: 12250}
+      Script: {instanceID: 12254}
     - Class: 114
-      Script: {instanceID: 12268}
+      Script: {instanceID: 12272}
     - Class: 114
-      Script: {instanceID: 12396}
+      Script: {instanceID: 12400}
     - Class: 114
-      Script: {instanceID: 12500}
+      Script: {instanceID: 12504}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12614}
     - Class: 114
-      Script: {instanceID: 12636}
+      Script: {instanceID: 12642}
     - Class: 114
-      Script: {instanceID: 12826}
+      Script: {instanceID: 12832}
     - Class: 114
-      Script: {instanceID: 12908}
+      Script: {instanceID: 12914}
     - Class: 114
-      Script: {instanceID: 13096}
+      Script: {instanceID: 13102}
     - Class: 114
-      Script: {instanceID: 13120}
+      Script: {instanceID: 13126}
     - Class: 114
-      Script: {instanceID: 13158}
+      Script: {instanceID: 13164}
     - Class: 114
-      Script: {instanceID: 13202}
+      Script: {instanceID: 13208}
     - Class: 114
-      Script: {instanceID: 13226}
+      Script: {instanceID: 13232}
     - Class: 114
-      Script: {instanceID: 13384}
+      Script: {instanceID: 13390}
     - Class: 114
-      Script: {instanceID: 13576}
+      Script: {instanceID: 13582}
     - Class: 114
-      Script: {instanceID: 13662}
+      Script: {instanceID: 13668}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -207,37 +209,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11200}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11408}
     - Class: 114
-      Script: {instanceID: 11410}
+      Script: {instanceID: 11412}
     - Class: 114
-      Script: {instanceID: 11454}
+      Script: {instanceID: 11456}
     - Class: 114
-      Script: {instanceID: 11836}
+      Script: {instanceID: 11838}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 12238}
+      Script: {instanceID: 12068}
     - Class: 114
-      Script: {instanceID: 12482}
+      Script: {instanceID: 12242}
     - Class: 114
-      Script: {instanceID: 12500}
+      Script: {instanceID: 12486}
     - Class: 114
-      Script: {instanceID: 12908}
+      Script: {instanceID: 12504}
     - Class: 114
-      Script: {instanceID: 13096}
+      Script: {instanceID: 12608}
     - Class: 114
-      Script: {instanceID: 13558}
+      Script: {instanceID: 12914}
     - Class: 114
-      Script: {instanceID: 13576}
+      Script: {instanceID: 13102}
     - Class: 114
-      Script: {instanceID: 13592}
+      Script: {instanceID: 13564}
     - Class: 114
-      Script: {instanceID: 13608}
+      Script: {instanceID: 13582}
     - Class: 114
-      Script: {instanceID: 13612}
+      Script: {instanceID: 13598}
     - Class: 114
-      Script: {instanceID: 13646}
+      Script: {instanceID: 13614}
+    - Class: 114
+      Script: {instanceID: 13618}
+    - Class: 114
+      Script: {instanceID: 13652}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -533,6 +539,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 058487234bd423869956950855da4546
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SettingsBottonController
+  - hash:
+      serializedVersion: 2
       Hash: 265cf27ba050d55ff33a8acab4ded6c0
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
@@ -623,7 +635,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 098602e77bf71c8ca8fe1dadcb06d4ef
+      Hash: 49a73c7f9bf0a57a757592d3a6f9628c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GraphicSettings
@@ -639,6 +651,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: KeyboardAndMouseSettings
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -917,10 +935,10 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 6d050c4bf6caad754c658cf866ae9ec0
+      Hash: 5df5948a89cf0ca6dcb664b8180817d0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: LevelLoad
+    className: SaveLoad
   - hash:
       serializedVersion: 2
       Hash: 7072231382eb3c4871b3dd75ad0227e1

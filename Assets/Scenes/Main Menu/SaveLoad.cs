@@ -19,13 +19,9 @@ public class SaveLoad : MonoBehaviour
 
     void Start()
     {
-        //saves = new GameObject[] ;
-
-        
-
         for (int i = 0; i < 6; i++)
         {
-            saveFilePath = Application.persistentDataPath + "/save" + (i + 1) + ".gamesave";
+            saveFilePath = Application.persistentDataPath + "/Saves/save" + (i + 1) + ".gamesave";
 
             if (File.Exists(saveFilePath))
             {
@@ -49,9 +45,9 @@ public class SaveLoad : MonoBehaviour
 
 
 
-    public void SaveGame()
+    public void SaveGame() //////.........................................................................
     {
-        saveFilePath = Application.persistentDataPath + "/save1.gamesave";
+        saveFilePath = Application.persistentDataPath + "/Saves/save1.gamesave";
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream fs = new FileStream(saveFilePath, FileMode.Create);
@@ -79,7 +75,7 @@ public class SaveLoad : MonoBehaviour
 
 
 
-    public bool DoubleClick(int save)
+    public bool DoubleClickSaveLoad(int save)
     {
         if (saveSelected == save)
         {
@@ -88,8 +84,6 @@ public class SaveLoad : MonoBehaviour
                 return true;
             }
         }
-
-
 
         saveSelected = save;
         saveSelectedTime = Time.time;
@@ -100,7 +94,7 @@ public class SaveLoad : MonoBehaviour
     public void Load(int save)
     {
 
-        if (DoubleClick(save))
+        if (DoubleClickSaveLoad(save))
         {
             Debug.Log("Загрузка " + save + "го сохранения");
         }

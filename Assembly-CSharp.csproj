@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DF70FF4F-AEEA-50C7-9C4F-153612500CE1}</ProjectGuid>
+    <ProjectGuid>{7927506B-B797-86C1-9C01-F116D24089BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -70,10 +70,12 @@
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ вперёд\Vagon_trigger_on_up.cs" />
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ назад\Vagon_triger_of_down.cs" />
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ назад\Vagon_triger_of_up.cs" />
+    <Compile Include="Assets\Scenes\Main Menu\Classes\SaveClass.cs" />
     <Compile Include="Assets\Scenes\Main Menu\Computer.cs" />
     <Compile Include="Assets\Scenes\Main Menu\GraphicSettings.cs" />
-    <Compile Include="Assets\Scenes\Main Menu\SaveClass.cs" />
+    <Compile Include="Assets\Scenes\Main Menu\KeyboardAndMouseSettings.cs" />
     <Compile Include="Assets\Scenes\Main Menu\SaveLoad.cs" />
+    <Compile Include="Assets\Scenes\Main Menu\SettingsBottonController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\UI\BottonManager.cs" />
@@ -86,61 +88,61 @@
     <Compile Include="Assets\Scripts\cube1.cs" />
     <Compile Include="Assets\Scripts\cube2.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -320,19 +322,19 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>A:/Windows/Desktop/o.o/Unity/Alpha A/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

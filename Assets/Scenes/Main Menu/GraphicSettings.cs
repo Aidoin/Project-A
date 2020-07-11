@@ -12,7 +12,6 @@ public class GraphicSettings : MonoBehaviour
     public Toggle fullScreen;
     public Slider fieldOfView;
     public Text TextFOV;
-    public GameObject BottonFOV;
     
     int refreshRate = 60;
 
@@ -83,7 +82,7 @@ public class GraphicSettings : MonoBehaviour
             else // Если настройки при первом запуске не были изменены
             {
                 screenResolution.value = 0;
-                Screen.SetResolution(res[0].width, res[0].height, Screen.fullScreen);
+                try { Screen.SetResolution(res[0].width, res[0].height, Screen.fullScreen); } catch { Debug.Log("Перед окончательным билдом изменить значение герцовки на 60 либо переделать функцию"); }
             }
 
             if (PlayerPrefs.HasKey("ScreenMode")) // Если настройки при первом запуске были изменены
@@ -118,7 +117,6 @@ public class GraphicSettings : MonoBehaviour
                 fieldOfView.value = 80;
                 TextFOV.text = "80";
             }
-            BottonFOV.SetActive(false);
         }
     }
 
@@ -152,13 +150,7 @@ public class GraphicSettings : MonoBehaviour
 
     public void SetSliderFOV()
     {
-        TextFOV.text = fieldOfView.value.ToString();
-        BottonFOV.SetActive(true);
-    }
-
-    public void SetFieldOfView()
-    {
+        TextFOV.text = ((int)fieldOfView.value).ToString();
         PlayerPrefs.SetFloat("FieldOfView", fieldOfView.value);
-        BottonFOV.SetActive(false);
     }
 }
