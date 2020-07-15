@@ -219,6 +219,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11972}
     - Class: 114
+      Script: {instanceID: 12034}
+    - Class: 114
       Script: {instanceID: 12068}
     - Class: 114
       Script: {instanceID: 12242}
@@ -247,6 +249,8 @@ ScriptsOnlyBuild:
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 143
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -527,7 +531,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: f3c079e0bc981b5e5215170ef1cdcbf7
+      Hash: df3edeb5a80832dd4ea1a77928794589
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -635,7 +639,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 49a73c7f9bf0a57a757592d3a6f9628c
+      Hash: bd89990d9e9bd68c5d30c5ff239e0241
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GraphicSettings
@@ -653,7 +657,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 6c1fd4e84825668793cf000f2d99eace
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: KeyboardAndMouseSettings

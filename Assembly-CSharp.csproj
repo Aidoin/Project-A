@@ -70,12 +70,8 @@
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ вперёд\Vagon_trigger_on_up.cs" />
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ назад\Vagon_triger_of_down.cs" />
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ назад\Vagon_triger_of_up.cs" />
-    <Compile Include="Assets\Scenes\Main Menu\Classes\SaveClass.cs" />
     <Compile Include="Assets\Scenes\Main Menu\Computer.cs" />
-    <Compile Include="Assets\Scenes\Main Menu\GraphicSettings.cs" />
-    <Compile Include="Assets\Scenes\Main Menu\KeyboardAndMouseSettings.cs" />
     <Compile Include="Assets\Scenes\Main Menu\SaveLoad.cs" />
-    <Compile Include="Assets\Scenes\Main Menu\SettingsBottonController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\UI\BottonManager.cs" />
@@ -83,10 +79,15 @@
     <Compile Include="Assets\Scripts\UI\Inventory\CurrentItem.cs" />
     <Compile Include="Assets\Scripts\UI\Inventory\DestroyMiniMassages.cs" />
     <Compile Include="Assets\Scripts\UI\Inventory\Inventory.cs" />
-    <Compile Include="Assets\Scripts\UI\Inventory\Item.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\Classes\Item.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\Classes\SaveClass.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\GraphicSettings.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\KeyboardAndMouseSettings.cs" />
+    <Compile Include="Assets\Scripts\UI\Settings\SettingsBottonController.cs" />
     <Compile Include="Assets\Scripts\cube1.cs" />
     <Compile Include="Assets\Scripts\cube2.cs" />
+    <None Include="Assets\Scripts\UI\Settings\Содержание PlayerPrefs.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>A:/Windows/Desktop/o.o/GitHub/Project-A/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

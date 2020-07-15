@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     public Collider playerColider;
 
     private Quaternion originalRotX, originalRotY; // Вращение
@@ -13,33 +13,26 @@ public class PlayerController : MonoBehaviour
     private CharacterController ch_controller;
     private Camera mainCamera;
 
-    private Settings settings;
-
     public bool canСontrol = true;
     private bool move_jump; // Возможен ли прыжок?
     private float rotX = 0, rotY = 0; // Что-то с вращением (наверно угол, не помню)
     public float gravityFois; // Гравитация
     public float move_up, move_down, move_left, move_right; // Переменые для движения и прыжка
-    private float slide;
-    private float inertia;
-    private float player_speed;
-    private float player_run;
-    
 
-
-
-    Quaternion QuaternionX, QuaternionY;
+    // Константы
+    public float graviti = 20f; // Гравитация
+    private float slide = 0.2f; // Скольжение
+    private float inertia = 0.005f; // Инерция в воздухе (чем меньше, тембольше инерция)
+    private float player_speed = 4f; // Скорость передвежения
+    private float player_moove = 1; // Скорость ходьбы
+    private float player_run = 2f; // Скорость бега добовляется к скорости движения
+    public float player_jamp = 7f; // Высота прыжка
+    public float mous_sensetiviti = 2f; // Чувствитеьность мыши
 
     private void Awake()
     {
         ch_controller = GetComponent<CharacterController>(); // Получаем компонент
         mainCamera = Camera.main;
-
-        settings = GameObject.FindGameObjectWithTag("World").GetComponent<Settings>();
-        slide = settings.slide;
-        inertia = settings.inertia;
-        player_speed = settings.player_speed;
-        player_run = settings.player_run;
     }
 
     private void Start()
@@ -53,9 +46,9 @@ public class PlayerController : MonoBehaviour
         Physics.IgnoreCollision(this.ch_controller, playerColider);
 
     }
-    
 
-    private void FixedUpdate() // Все движения
+
+    private void FixedUpdate()
     {
         GamingGravity();
     }
@@ -69,7 +62,7 @@ public class PlayerController : MonoBehaviour
             MovePlayer();
 
         }
-        // Записывает все значения в вектор
+        // Записывает все значения перемещения персонажа в вектор
         {
             moveVector = new Vector3((move_right + move_left) * player_speed, gravityFois, (move_down + move_up) * player_speed);
 
@@ -83,11 +76,11 @@ public class PlayerController : MonoBehaviour
     private void GamingGravity()
     {
         // Ускорение свободного падения
-        if(!ch_controller.isGrounded) // Если персонаж не касается земли то:
+        if (!ch_controller.isGrounded) // Если персонаж не касается земли то:
         {
             if (gravityFois > -9.8f)
             {
-                gravityFois = gravityFois - (settings.graviti * Time.deltaTime); // Сила гравитации прибовляется
+                gravityFois = gravityFois - (graviti * Time.deltaTime); // Сила гравитации прибовляется
             }
         }
         else // Если он на земле, то:
@@ -155,42 +148,48 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer() // Передвижение персонажа
     {
-        if (Input.GetButton("Бег")) // Нажатие кнопки Бег
+        if (Input.GetKey(PlayerPrefs.GetString("KeyMotion6"))) // Нажатие кнопки Бег
         {
-            player_run = settings.player_run; // Скорость бега увеличивается 
-        } else 
-        { player_run = 1; } // Скорость бега возвращается в изначальное состояние
+            player_moove = player_run; // Скорость движения увеличивается 
+        }
+        else
+        {
+            if (Input.GetKeyUp(PlayerPrefs.GetString("KeyMotion6")))
+            {
+                player_moove = 1; // Скорость движения возвращается в изначальное состояние
+            }
+        }
 
         // Движение впрёд
-        if (Input.GetButton("Вперёд") && move_jump == true) // Нажатие кнопки движения
+        if (Input.GetKey(PlayerPrefs.GetString("KeyMotion1")) && move_jump == true) // Нажатие кнопки движения
         {
-            move_up = + 1 * player_run; // Переменая движения задаёт движение 1 и умножаетнаскорость бега
+            move_up = +1 * player_moove; // Переменая движения задаёт движение 1 и умножаетнаскорость бега
         }
 
         // Движение назад 
-        if (Input.GetButton("Назад") && move_jump == true) 
-        { 
-            move_down = - 1 * player_run;
+        if (Input.GetKey(PlayerPrefs.GetString("KeyMotion2")) && move_jump == true)
+        {
+            move_down = -1 * player_moove;
         }
 
         // Движение влево
-        if (Input.GetButton("Влево") && move_jump == true) 
-        { 
-            move_left = - 1 * player_run; 
+        if (Input.GetKey(PlayerPrefs.GetString("KeyMotion3")) && move_jump == true)
+        {
+            move_left = -1 * player_moove;
         }
 
         // Движение вправо
-        if (Input.GetButton("Вправо") && move_jump == true)  
-        { 
-            move_right = + 1* player_run; 
+        if (Input.GetKey(PlayerPrefs.GetString("KeyMotion4")) && move_jump == true)
+        {
+            move_right = +1 * player_moove;
         }
 
         // Прыжок
-        if (Input.GetButton("Прыжок")) // Если нажат прыжок
+        if (Input.GetKey(PlayerPrefs.GetString("KeyMotion5"))) // Если нажат прыжок
         {
             if (move_jump == true) //Если игрок не в воздухе
             {
-                gravityFois = settings.player_jamp; // игрок подпрыгивает
+                gravityFois = player_jamp; // игрок подпрыгивает
                 move_jump = false; // Пока игрок в воздухе ему нельзя прыгать
             }
         }
@@ -199,12 +198,12 @@ public class PlayerController : MonoBehaviour
 
     private void MousVrashenie()
     {
-        rotX += Input.GetAxis("Mouse X") * settings.mous_sensetiviti;
-        rotY += Input.GetAxis("Mouse Y") * settings.mous_sensetiviti;
-        QuaternionX = Quaternion.AngleAxis(rotX, Vector3.up);
-        QuaternionY = Quaternion.AngleAxis(rotY, Vector3.left);
+        rotX += Input.GetAxis("Mouse X") * mous_sensetiviti;
+        rotY += Input.GetAxis("Mouse Y") * mous_sensetiviti;
+        originalRotX = Quaternion.AngleAxis(rotX, Vector3.up);
+        originalRotY = Quaternion.AngleAxis(rotY, Vector3.left);
 
-        transform.localRotation = originalRotX * QuaternionX;
-        mainCamera.transform.localRotation = originalRotY * QuaternionY;
+        transform.localRotation = originalRotX;
+        mainCamera.transform.localRotation = originalRotY;
     }
 }

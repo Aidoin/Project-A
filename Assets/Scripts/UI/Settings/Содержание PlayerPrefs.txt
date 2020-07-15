@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+////////////////// НАСТРОЙКИ ГРАФИКИ
+
+Качество графики (GraphicsQuality) int // содержет номер пункта из списка качеств графики
+Разрешение экрана (Resolution) int // содержет номер пункта из списка разрешений экрана
+Полноэкранный режим (ScreenMode) int // содержит номера 0 или 1, имитирует булевую переменую
+Поле зрения (FieldOfView) float // содержит значение поля зрения камеры персонажа
+
+
+///////////////// Управление
+
+// Стринговые
+
+KeyMotion1 - Движение вперёд
+KeyMotion2 - Движение назад
+KeyMotion3 - Движение Влево
+KeyMotion4 - Движение вправо
+KeyMotion5 - Прыжок
+KeyMotion6 - Бег
+KeyMotion7 - Взаимодействие
+KeyMotion8 - Инвентарь

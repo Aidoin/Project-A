@@ -19,6 +19,8 @@ public class SaveLoad : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(this.ToString() + " убрать функцию сохранения SaveGame()");
+
         for (int i = 0; i < 6; i++)
         {
             saveFilePath = Application.persistentDataPath + "/Saves/save" + (i + 1) + ".gamesave";
@@ -43,9 +45,7 @@ public class SaveLoad : MonoBehaviour
     }
 
 
-
-
-    public void SaveGame() //////.........................................................................
+    public void SaveGame() //////...............................................................................................
     {
         saveFilePath = Application.persistentDataPath + "/Saves/save1.gamesave";
 
@@ -64,15 +64,6 @@ public class SaveLoad : MonoBehaviour
 
         Debug.Log(saveFilePath);
     }
-
-
-
-
-
-
-
-
-
 
 
     public bool DoubleClickSaveLoad(int save)
