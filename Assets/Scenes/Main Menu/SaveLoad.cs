@@ -4,11 +4,11 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SaveLoad : MonoBehaviour
 { 
     public GameObject[] saves = new GameObject[6];
-
     public Sprite gameActiv;
 
     int saveSelected = 0;
@@ -19,9 +19,7 @@ public class SaveLoad : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(this.ToString() + " убрать функцию сохранения SaveGame()");
-
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++) // Подгрузка информация о сохранениях
         {
             saveFilePath = Application.persistentDataPath + "/Saves/save" + (i + 1) + ".gamesave";
 
@@ -35,38 +33,35 @@ public class SaveLoad : MonoBehaviour
                 fs.Close();
 
                 saves[i].transform.GetChild(0).GetComponent<Image>().sprite = gameActiv;
-
                 saves[i].transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().enabled = true;
-
                 saves[i].transform.GetChild(2).GetComponent<Scrollbar>().size = save.progressOfPassing;
-
             }
         }
     }
 
 
-    public void SaveGame() //////...............................................................................................
+    public void Load(int noSave) // Загрузка сохранений
     {
-        saveFilePath = Application.persistentDataPath + "/Saves/save1.gamesave";
+        if (DoubleClickSaveLoad(noSave))
+        {
+            saveFilePath = Application.persistentDataPath + "/Saves/save" + noSave + ".gamesave";
 
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream fs = new FileStream(saveFilePath, FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream(saveFilePath, FileMode.Open);
+            Save save = (Save)bf.Deserialize(fs);
+            fs.Close();
 
-        Save save = new Save();
 
-        save.progressOfPassing = 0.001f;
+            SceneManager.LoadScene("1Level");
 
-        save.active = true;
+            //Application.LoadLevel(save.Level);
+            //Application.LoadLevel(save.Level);
 
-        bf.Serialize(fs, save);
-
-        fs.Close();
-
-        Debug.Log(saveFilePath);
+            Debug.Log("Загрузка " + save + "го сохранения");
+        }
     }
 
-
-    public bool DoubleClickSaveLoad(int save)
+    bool DoubleClickSaveLoad(int save) // Проверка даблклика
     {
         if (saveSelected == save)
         {
@@ -82,13 +77,37 @@ public class SaveLoad : MonoBehaviour
     }
 
 
-    public void Load(int save)
+    public void SaveGame() //////...............................................................................................
     {
+        saveFilePath = Application.persistentDataPath + "/Saves/save1.gamesave";
 
-        if (DoubleClickSaveLoad(save))
-        {
-            Debug.Log("Загрузка " + save + "го сохранения");
-        }
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream fs = new FileStream(saveFilePath, FileMode.Create);
 
+        Save save = new Save();
+
+        save.progressOfPassing = 0.001f;
+        save.active = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        bf.Serialize(fs, save);
+
+        fs.Close();
+
+        Debug.Log(saveFilePath);
     }
 }

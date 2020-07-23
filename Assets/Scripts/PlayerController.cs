@@ -4,35 +4,45 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public Collider playerColider;
-
-    private Quaternion originalRotX, originalRotY; // Вращение
+    private Quaternion originalRotX, originalRotY, quaternionX, quaternionY; // Вращение
     private Vector3 moveVector; // Направление движения
 
+    public Collider playerColider;
     private CharacterController ch_controller;
     private Camera mainCamera;
 
-    public bool canСontrol = true;
-    private bool move_jump; // Возможен ли прыжок?
-    private float rotX = 0, rotY = 0; // Что-то с вращением (наверно угол, не помню)
     public float gravityFois; // Гравитация
     public float move_up, move_down, move_left, move_right; // Переменые для движения и прыжка
+    private float rotX = 0, rotY = 0; // Что-то с вращением (наверно угол, не помню)
+
+    public bool canСontrol = true;
+    private bool move_jump; // Возможен ли прыжок?
 
     // Константы
     public float graviti = 20f; // Гравитация
+    public float player_jamp = 7f; // Высота прыжка
+    public float mous_sensetiviti; // Чувствитеьность мыши
     private float slide = 0.2f; // Скольжение
     private float inertia = 0.005f; // Инерция в воздухе (чем меньше, тембольше инерция)
     private float player_speed = 4f; // Скорость передвежения
     private float player_moove = 1; // Скорость ходьбы
     private float player_run = 2f; // Скорость бега добовляется к скорости движения
-    public float player_jamp = 7f; // Высота прыжка
-    public float mous_sensetiviti = 2f; // Чувствитеьность мыши
+
 
     private void Awake()
     {
         ch_controller = GetComponent<CharacterController>(); // Получаем компонент
         mainCamera = Camera.main;
+
+        PlayerPrefs.SetString("KeyMotion1", "w");
+        PlayerPrefs.SetString("KeyMotion2", "s");
+        PlayerPrefs.SetString("KeyMotion3", "a");
+        PlayerPrefs.SetString("KeyMotion4", "d");
+        PlayerPrefs.SetString("KeyMotion5", "space");
+        PlayerPrefs.SetString("KeyMotion6", "left shift");
+        PlayerPrefs.SetString("KeyMotion7", "e");
+        PlayerPrefs.SetString("KeyMotion8", "i");
+        PlayerPrefs.SetFloat("MouseSensitivity", 10);
     }
 
     private void Start()
@@ -41,16 +51,12 @@ public class PlayerController : MonoBehaviour
         originalRotX = transform.localRotation;
         originalRotY = mainCamera.transform.localRotation;
 
-        moveVector = Vector3.zero; // Обнуление вектора движения (чтобы небыо случайных ошибок)
+        mainCamera.fieldOfView = PlayerPrefs.GetInt("FieldOfView");
+        mous_sensetiviti = PlayerPrefs.GetFloat("MouseSensitivity");
 
-        Physics.IgnoreCollision(this.ch_controller, playerColider);
+        moveVector = Vector3.zero; // Обнуление вектора движения (чтобы не было случайных ошибок)
 
-    }
-
-
-    private void FixedUpdate()
-    {
-        GamingGravity();
+        Physics.IgnoreCollision(ch_controller, playerColider);
     }
 
 
@@ -70,6 +76,12 @@ public class PlayerController : MonoBehaviour
 
             ch_controller.Move(moveVector * Time.deltaTime); // Движение персонажа
         }
+    }
+
+
+    private void FixedUpdate()
+    {
+        GamingGravity();
     }
 
 
@@ -141,8 +153,6 @@ public class PlayerController : MonoBehaviour
             else
             { move_right = 0; }
         }
-
-
     }
 
 
@@ -193,17 +203,17 @@ public class PlayerController : MonoBehaviour
                 move_jump = false; // Пока игрок в воздухе ему нельзя прыгать
             }
         }
-
     }
+
 
     private void MousVrashenie()
     {
-        rotX += Input.GetAxis("Mouse X") * mous_sensetiviti;
-        rotY += Input.GetAxis("Mouse Y") * mous_sensetiviti;
-        originalRotX = Quaternion.AngleAxis(rotX, Vector3.up);
-        originalRotY = Quaternion.AngleAxis(rotY, Vector3.left);
+        rotX += Input.GetAxis("Mouse X") * mous_sensetiviti / 5;
+        rotY += Input.GetAxis("Mouse Y") * mous_sensetiviti / 5;
+        quaternionX = Quaternion.AngleAxis(rotX, Vector3.up);
+        quaternionY = Quaternion.AngleAxis(rotY, Vector3.left);
 
-        transform.localRotation = originalRotX;
-        mainCamera.transform.localRotation = originalRotY;
+        transform.localRotation = originalRotX * quaternionX;
+        mainCamera.transform.localRotation = originalRotY * quaternionY;
     }
 }

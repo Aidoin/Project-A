@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-
-
     public GameObject container;
     public GameObject inventory;
     public GameObject point;
     public PlayerController player;
-
-
-    private void Awake()
-    {
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    }
 
 
     void Start()
@@ -27,11 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        ToggleMainMenu();
-    }
-
-    void ToggleMainMenu()
-    {
+        // ToggleMainMenu
         if (Input.GetButtonDown("Cancel"))
         {
             if (container.activeSelf)
@@ -51,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+
     public void Resume()
     {
         container.SetActive(false);
@@ -60,5 +49,8 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1;
     }
+
+
+
 
 }

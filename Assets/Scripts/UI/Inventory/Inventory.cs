@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
 
     void ToggleInventory()
     {
-        if (Input.GetButtonDown(PlayerPrefs.GetString("KeyMotion8")))
+        if (Input.GetKeyDown(PlayerPrefs.GetString("KeyMotion8")))
         {
             if (cellContainer.activeSelf)
             {
@@ -82,7 +82,7 @@ public class Inventory : MonoBehaviour
 
     void TakeInventory()
     {
-        if (Input.GetButtonDown(PlayerPrefs.GetString("KeyMotion7")))
+        if (Input.GetKeyDown(PlayerPrefs.GetString("KeyMotion7")))
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;

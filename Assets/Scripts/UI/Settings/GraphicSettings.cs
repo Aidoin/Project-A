@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GraphicSettings : MonoBehaviour
 {
+    [Header("Старт игры")]
+    public StartGame resolution;
     [Header("Качество графики")]
     public Dropdown graphics;
     [Header("Разрешение экрана")]
@@ -14,127 +16,66 @@ public class GraphicSettings : MonoBehaviour
     public Toggle fullScreen;
     [Header("Поле зрения")]
     public Slider fieldOfView;
-    public Text TextFOV;
+    public Text textFOV;
+    public Camera mainCamera;
 
     Resolution[] res;
 
     
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        Debug.Log(QualitySettings.pixelLightCount);
+        QualitySettings.pixelLightCount = 5;
+        Debug.Log(QualitySettings.pixelLightCount);
 
         ///////////////////////////////////////////////////////////////////////////// Graphics
         {
             graphics.ClearOptions();
             graphics.AddOptions(QualitySettings.names.ToList());
 
-            if (PlayerPrefs.HasKey("GraphicsQuality"))
-            {
-                graphics.value = PlayerPrefs.GetInt("GraphicsQuality");
-                QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("GraphicsQuality"));
-            }
-            else
-            {
-                graphics.value = QualitySettings.GetQualityLevel();
-            }
+            graphics.value = PlayerPrefs.GetInt("GraphicsQuality");
         }
 
         ///////////////////////////////////////////////////////////////////////////// ScreenResolution
         {
-
-            Resolution[] resS = Screen.resolutions.Reverse().ToArray();
-
-            List<Resolution> resList = new List<Resolution>();
-            List<string> strRes = new List<string>();
-
-            
-
-            // Проверка отсеевание одинаковых разрешений с разной герцовкой
-            for (int i = 0; i < resS.Length; i++) // Проверяемые значения
-            {
-                bool repetition = false;
-
-                for (int o = 0; o < resList.Count; o++) // Записанные значения
-                {
-                    if (resS[i].height == resList[o].height && resS[i].width == resList[o].width) { repetition = true; break; /* Значение повторяется - пропуск */}
-
-                }
-                if (!repetition) // Если значение не повторилось
-                {
-                    resList.Add(resS[i]);
-                    strRes.Add(resS[i].width.ToString() + " x " + resS[i].height.ToString());
-                }
-            }
-
-            res = resList.ToArray();
-
+            res = resolution.resList.ToArray();
             screenResolution.ClearOptions();
-            screenResolution.AddOptions(strRes);
+            screenResolution.AddOptions(resolution.strRes);
 
 
-
-            if (PlayerPrefs.HasKey("Resolution")) // Если настройки при первом запуске были изменены
+            try // Отсечение ошибки если происходит запуск игры с новыми разрешениями экрана
             {
-                try // Отсечение ошибки если происходит запуск игры с новыми разрешениями экрана
-                {
-                    screenResolution.value = PlayerPrefs.GetInt("Resolution");
-                    Screen.SetResolution(res[PlayerPrefs.GetInt("Resolution")].width, res[PlayerPrefs.GetInt("Resolution")].height, Screen.fullScreen);
-                }
-                catch 
-                {try 
-                    {
-                        screenResolution.value = 0;
-                        Screen.SetResolution(res[0].width, res[0].height, Screen.fullScreen);
-                    } 
-                 catch { Debug.Log("Разрешения экрана не найдены"); }
-                }
+                screenResolution.value = PlayerPrefs.GetInt("Resolution");
             }
-            else // Если настройки при первом запуске не были изменены
+            catch
             {
                 screenResolution.value = 0;
                 Screen.SetResolution(res[0].width, res[0].height, Screen.fullScreen);
             }
 
 
-            if (PlayerPrefs.HasKey("ScreenMode")) // Если настройки при первом запуске были изменены
-            {
-                if (PlayerPrefs.GetInt("ScreenMode") == 1)
-                {
-                    Screen.fullScreen = true;
-                    fullScreen.isOn = true;
-                }
-                else
-                {
-                    Screen.fullScreen = false;
-                    fullScreen.isOn = false;
-                }
-            }
-            else // Если настройки при первом запуске не были изменены
+            if (PlayerPrefs.GetInt("ScreenMode") == 1)
             {
                 Screen.fullScreen = true;
                 fullScreen.isOn = true;
             }
+            else
+            {
+                Screen.fullScreen = false;
+                fullScreen.isOn = false;
+            }
+
         }
 
         ///////////////////////////////////////////////////////////////////////////// MainCamera
         {
-            if (PlayerPrefs.HasKey("FieldOfView"))
-            {
-                fieldOfView.value = PlayerPrefs.GetFloat("FieldOfView");
-                TextFOV.text = fieldOfView.value.ToString();
-            }
-            else
-            {
-                PlayerPrefs.SetFloat("FieldOfView", 80);
-                fieldOfView.value = 80;
-                TextFOV.text = "80";
-            }
+            fieldOfView.value = PlayerPrefs.GetInt("FieldOfView");
+            textFOV.text = fieldOfView.value.ToString();
         }
     }
 
 
-
-    public void SetScreenMode()
+    public void SetScreenMode() // Режим экрана (оконный\полноэкранных)
     {
         Screen.fullScreen = fullScreen.isOn;
 
@@ -148,21 +89,26 @@ public class GraphicSettings : MonoBehaviour
         }
     }
 
-    public void SetResolution()
+    public void SetResolution() // Выставление разрешения экрана
     {
         Screen.SetResolution(res[screenResolution.value].width, res[screenResolution.value].height, Screen.fullScreen);
         PlayerPrefs.SetInt("Resolution", screenResolution.value);
+
+        PlayerPrefs.SetInt("ScreenResolutionWidth", res[screenResolution.value].width);
+        PlayerPrefs.SetInt("ScreenResolutionHeight", res[screenResolution.value].height);
     }
 
-    public void SetGraphics()
+    public void SetGraphics() // Выставление графики
     {
         QualitySettings.SetQualityLevel(graphics.value);
         PlayerPrefs.SetInt("GraphicsQuality", graphics.value);
     }
 
-    public void SetSliderFOV()
+    public void SetSliderFOV() // Выставление поля зрения
     {
-        TextFOV.text = ((int)fieldOfView.value).ToString();
-        PlayerPrefs.SetFloat("FieldOfView", fieldOfView.value);
+        textFOV.text = ((int)fieldOfView.value).ToString();
+        PlayerPrefs.SetInt("FieldOfView", (int)fieldOfView.value);
+        if (mainCamera != null)
+            mainCamera.fieldOfView = PlayerPrefs.GetInt("FieldOfView");
     }
 }
