@@ -34,15 +34,35 @@ public class PlayerController : MonoBehaviour
         ch_controller = GetComponent<CharacterController>(); // Получаем компонент
         mainCamera = Camera.main;
 
-        PlayerPrefs.SetString("KeyMotion1", "w");
-        PlayerPrefs.SetString("KeyMotion2", "s");
-        PlayerPrefs.SetString("KeyMotion3", "a");
-        PlayerPrefs.SetString("KeyMotion4", "d");
-        PlayerPrefs.SetString("KeyMotion5", "space");
-        PlayerPrefs.SetString("KeyMotion6", "left shift");
-        PlayerPrefs.SetString("KeyMotion7", "e");
-        PlayerPrefs.SetString("KeyMotion8", "i");
-        PlayerPrefs.SetFloat("MouseSensitivity", 10);
+        if (!PlayerPrefs.HasKey("KeyMotion1"))
+            PlayerPrefs.SetString("KeyMotion1", "w");
+
+        if (!PlayerPrefs.HasKey("KeyMotion2"))
+            PlayerPrefs.SetString("KeyMotion2", "s");
+
+        if (!PlayerPrefs.HasKey("KeyMotion3"))
+            PlayerPrefs.SetString("KeyMotion3", "a");
+
+        if (!PlayerPrefs.HasKey("KeyMotion4"))
+            PlayerPrefs.SetString("KeyMotion4", "d");
+
+        if (!PlayerPrefs.HasKey("KeyMotion5"))
+            PlayerPrefs.SetString("KeyMotion5", "space");
+
+        if (!PlayerPrefs.HasKey("KeyMotion6"))
+            PlayerPrefs.SetString("KeyMotion6", "left shift");
+
+        if (!PlayerPrefs.HasKey("KeyMotion7"))
+            PlayerPrefs.SetString("KeyMotion7", "e");
+
+        if (!PlayerPrefs.HasKey("KeyMotion8"))
+            PlayerPrefs.SetString("KeyMotion8", "i");
+
+        if (!PlayerPrefs.HasKey("MouseSensitivity"))
+            PlayerPrefs.SetFloat("MouseSensitivity", 10);
+
+        if (!PlayerPrefs.HasKey("FieldOfView"))
+            PlayerPrefs.SetInt("FieldOfView", 60);
     }
 
     private void Start()
@@ -215,5 +235,10 @@ public class PlayerController : MonoBehaviour
 
         transform.localRotation = originalRotX * quaternionX;
         mainCamera.transform.localRotation = originalRotY * quaternionY;
+    }
+
+    public void SetMouseSensitivity()
+    {
+        mous_sensetiviti = PlayerPrefs.GetFloat("MouseSensitivity");
     }
 }

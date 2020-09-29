@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Computer : MonoBehaviour
 {
-    public StartGame startGame;
     public GameObject windowPlayGame;
     public GameObject windowSettings;
     public GameObject windowExit;
@@ -13,9 +12,6 @@ public class Computer : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
-
-
         if (!Directory.Exists(Application.persistentDataPath + "/Saves")) // Если Папки с сохранениями нет, она генирируется 
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
@@ -23,25 +19,25 @@ public class Computer : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("GraphicsQuality")) // Если переменных управления нет, они генирируются 
         {
-            // Настройки графики
-            PlayerPrefs.SetInt("GraphicsQuality", 3);
-            PlayerPrefs.SetInt("ScreenMode", 1);
-            PlayerPrefs.SetInt("FieldOfView", 80);
-            PlayerPrefs.SetInt("ScreenResolutionWidth", startGame.resList[0].width);
-            PlayerPrefs.SetInt("ScreenResolutionHeight", startGame.resList[0].height);
+            //// Настройки графики
+            //PlayerPrefs.SetInt("GraphicsQuality", 3);
+            //PlayerPrefs.SetInt("ScreenMode", 1);
+            //PlayerPrefs.SetInt("FieldOfView", 80);
+            //PlayerPrefs.SetInt("ScreenResolutionWidth", startGame.resList[0].width);
+            //PlayerPrefs.SetInt("ScreenResolutionHeight", startGame.resList[0].height);
 
-            // Чувствительность мыши
-            PlayerPrefs.SetFloat("MouseSensitivity", 10);
+            //// Чувствительность мыши
+            //PlayerPrefs.SetFloat("MouseSensitivity", 10);
 
-            // Клавиши управления
-            PlayerPrefs.SetString("KeyMotion1", "w");
-            PlayerPrefs.SetString("KeyMotion2", "s");
-            PlayerPrefs.SetString("KeyMotion3", "a");
-            PlayerPrefs.SetString("KeyMotion4", "d");
-            PlayerPrefs.SetString("KeyMotion5", "space");
-            PlayerPrefs.SetString("KeyMotion6", "left shift");
-            PlayerPrefs.SetString("KeyMotion7", "e");
-            PlayerPrefs.SetString("KeyMotion8", "i");
+            //// Клавиши управления
+            //PlayerPrefs.SetString("KeyMotion1", "w");
+            //PlayerPrefs.SetString("KeyMotion2", "s");
+            //PlayerPrefs.SetString("KeyMotion3", "a");
+            //PlayerPrefs.SetString("KeyMotion4", "d");
+            //PlayerPrefs.SetString("KeyMotion5", "space");
+            //PlayerPrefs.SetString("KeyMotion6", "left shift");
+            //PlayerPrefs.SetString("KeyMotion7", "e");
+            //PlayerPrefs.SetString("KeyMotion8", "i");
         }
     }
 

@@ -5,9 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class Save
 {
-    public int Level;
     public bool active;
+    public int Level;
     public float progressOfPassing;
+
+    public string timeGameSave;
 
     public PlayerData Player = new PlayerData();
 

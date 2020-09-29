@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ вперёд\Vagon_trigger_on_up.cs" />
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ назад\Vagon_triger_of_down.cs" />
     <Compile Include="Assets\Scenes\1 scene\Scripts\Vagon\Скрипт движения по вагонам\Движ назад\Vagon_triger_of_up.cs" />
+    <Compile Include="Assets\Scenes\1 scene\cube1.cs" />
+    <Compile Include="Assets\Scenes\1 scene\cube2.cs" />
     <Compile Include="Assets\Scenes\Main Menu\Computer.cs" />
     <Compile Include="Assets\Scenes\Main Menu\SaveLoad.cs" />
     <Compile Include="Assets\Scripts\Classes\Item.cs" />
@@ -77,21 +79,20 @@
     <Compile Include="Assets\Scripts\Classes\SaveClass.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\Scripts\UI\GraphicSettings.cs" />
     <Compile Include="Assets\Scripts\UI\Inventory\Cells.cs" />
     <Compile Include="Assets\Scripts\UI\Inventory\CurrentItem.cs" />
     <Compile Include="Assets\Scripts\UI\Inventory\DestroyMiniMassages.cs" />
     <Compile Include="Assets\Scripts\UI\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\UI\KeyboardAndMouseSettings.cs" />
     <Compile Include="Assets\Scripts\UI\MenuButtonsAnimation.cs" />
     <Compile Include="Assets\Scripts\UI\PauseBottonManager.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\UI\Settings\GraphicSettings.cs" />
-    <Compile Include="Assets\Scripts\UI\Settings\KeyboardAndMouseSettings.cs" />
-    <Compile Include="Assets\Scripts\UI\Settings\SettingsBottonController.cs" />
-    <Compile Include="Assets\Scripts\UI\Settings\SettingsGraphic.cs" />
-    <Compile Include="Assets\Scripts\UI\StartGame.cs" />
-    <Compile Include="Assets\Scripts\cube1.cs" />
-    <Compile Include="Assets\Scripts\cube2.cs" />
-    <None Include="Assets\Scripts\UI\Settings\Содержание PlayerPrefs.txt" />
+    <Compile Include="Assets\Scripts\UI\PauseMenuBotton.cs" />
+    <Compile Include="Assets\Scripts\UI\SaveGame.cs" />
+    <Compile Include="Assets\Scripts\UI\SettingsBottonController.cs" />
+    <Compile Include="Assets\Scripts\UI\SettingsGraphic.cs" />
+    <None Include="Assets\Scripts\UI\Содержание PlayerPrefs.txt" />
     <Reference Include="UnityEngine">
       <HintPath>A:/Programs/Unity Versions/2019.4.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

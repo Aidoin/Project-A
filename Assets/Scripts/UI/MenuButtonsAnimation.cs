@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class MenuButtonsAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public AudioClip BottonActive, BottonKlick;
-    public PauseBottonManager bm;
+    public AudioClip bottonActive;
+    public PauseMenu pauseMenu;
     AudioSource audioB;
     Image image;
     Color colBotton; // Переменая для изменения цвета
@@ -29,32 +29,11 @@ public class MenuButtonsAnimation : MonoBehaviour, IPointerEnterHandler, IPointe
         BottonUnActiv();
     }
 
-    public void BottonClick(int botton)
+    public void BottonClick(int idBotton)
     {
-        // Проигрывается звук нажатия
-        bm.BottonClick(this);
-
         BottonUnActiv();
 
-        if (botton == 1)
-        {
-            bm.ResumeGame();
-        }
-        else
-        if (botton == 2)
-        {
-
-        }
-        else
-        if (botton == 3)
-        {
-
-        }
-        else
-        if (botton == 4)
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
+        pauseMenu.BottonClick(idBotton);
     }
 
     void BottonActiv()
@@ -65,7 +44,7 @@ public class MenuButtonsAnimation : MonoBehaviour, IPointerEnterHandler, IPointe
         image.color = colBotton;
 
         // Запуск звука
-        audioB.clip = BottonActive;
+        audioB.clip = bottonActive;
         audioB.Play();
     }
 
