@@ -230,6 +230,7 @@ public class PlayerController : MonoBehaviour
     {
         rotX += Input.GetAxis("Mouse X") * mous_sensetiviti / 5;
         rotY += Input.GetAxis("Mouse Y") * mous_sensetiviti / 5;
+        rotY = Mathf.Clamp(rotY, -80, 80);
         quaternionX = Quaternion.AngleAxis(rotX, Vector3.up);
         quaternionY = Quaternion.AngleAxis(rotY, Vector3.left);
 
