@@ -1,0 +1,132 @@
+ // strRes[0] = resS[resS.Length -1].width.ToString() + " x " + resS[resS.Length - 1].height.ToString();
+            
+           // Screen.SetResolution(resS[resS.Length - 1].width, resS[resS.Length - 1].height, Screen.fullScreen);
+            
+            // Sizes
+            {
+                // 16:9
+                res[1].width = 2560; res[1].height = 1440; res[1].refreshRate = res[1].refreshRate;     // 2560 1440
+                res[2].width = 1920; res[2].height = 1080; res[2].refreshRate = res[2].refreshRate;     // 1920 1080
+                res[3].width = 1600; res[3].height = 900; res[3].refreshRate = res[3].refreshRate;      // 1600 900
+                res[4].width = 1366; res[4].height = 768; res[4].refreshRate = res[4].refreshRate;      // 1366 768
+                res[5].width = 1280; res[5].height = 720; res[5].refreshRate = res[5].refreshRate;      // 1280 720
+                // 16:10
+                res[6].width = 2560; res[6].height = 1600; res[6].refreshRate = res[6].refreshRate;     // 2560 1600
+                res[7].width = 1920; res[7].height = 1200; res[7].refreshRate = res[7].refreshRate;     // 1920 1200
+                res[8].width = 1680; res[8].height = 1050; res[8].refreshRate = res[8].refreshRate;     // 1680 1050
+                res[9].width = 1440; res[9].height = 900; res[9].refreshRate = res[9].refreshRate;      // 1440 900
+                res[10].width = 1280; res[10].height = 800; res[10].refreshRate = res[10].refreshRate;  // 1280 800
+                // 4:3
+                res[11].width = 2048; res[11].height = 1536; res[11].refreshRate = res[11].refreshRate; // 2048 1536
+                res[12].width = 1600; res[12].height = 1200; res[12].refreshRate = res[12].refreshRate; // 1600 1200
+                res[13].width = 1440; res[13].height = 1080; res[13].refreshRate = res[13].refreshRate; // 1440 1080
+                res[14].width = 1400; res[14].height = 1050; res[14].refreshRate = res[14].refreshRate; // 1400 1050
+                res[15].width = 1280; res[15].height = 960; res[15].refreshRate = res[15].refreshRate;  // 1280 960
+                // Custon
+                //if( PlayerPrefs.)
+                res[16].width = res[16].width; res[1].height = 1440; //////////////////////////
+
+                Debug.Log(res[10]);
+            }
+
+            /*
+            for (int i = 1; i < 15; i++)
+            {
+                strRes[i] = res[i].width.ToString() + " x " + res[i].height.ToString();
+            }
+            */
+
+
+
+
+
+            //-(screenResolution.value - (res.Length - 1))
+
+
+
+
+
+
+
+
+foreach (KeyCode KCode in Enum.GetValues(typeof(KeyCode)))
+        {
+            Debug.Log("отлавливает значение");
+            if (Input.GetKeyDown(KCode) && KCode != KeyCode.Escape)
+            {
+                Debug.Log("поймало " + KCode.ToString());
+                KeyMousPanel.GetChild(IdBotton).transform.GetChild(0).GetComponent<Text>().text = KCode.ToString();
+                PlayerPrefs.SetString("KeyMotion" + (IdBotton + 1), KCode.ToString());
+                Rewrite = false;
+
+                Debug.Log(IdBotton + 1);
+                Debug.Log(PlayerPrefs.GetString("KeyMotion" + (IdBotton + 1)));
+            }
+        }
+
+
+
+
+    void Start()
+    {
+        ///////////////////////////////////////////////////////////////////////////// Graphics
+        {
+            graphics.ClearOptions();
+            graphics.AddOptions(QualitySettings.names.ToList());
+
+            graphics.value = PlayerPrefs.GetInt("GraphicsQuality");
+        }
+
+        ///////////////////////////////////////////////////////////////////////////// ScreenResolution
+        {
+            res = resolution.resList.ToArray();
+            screenResolution.ClearOptions();
+            screenResolution.AddOptions(resolution.strRes);
+
+
+            try // Отсечение ошибки если происходит запуск игры с новыми разрешениями экрана
+            {
+                screenResolution.value = PlayerPrefs.GetInt("Resolution");
+            }
+            catch
+            {
+                screenResolution.value = 0;
+                Screen.SetResolution(res[0].width, res[0].height, Screen.fullScreen);
+            }
+           
+
+            if (PlayerPrefs.HasKey("ScreenMode")) // Если настройки при первом запуске были изменены
+            {
+                if (PlayerPrefs.GetInt("ScreenMode") == 1)
+                {
+                    Screen.fullScreen = true;
+                    fullScreen.isOn = true;
+                }
+                else
+                {
+                    Screen.fullScreen = false;
+                    fullScreen.isOn = false;
+                }
+            }
+            else // Если настройки при первом запуске не были изменены
+            {
+                Screen.fullScreen = true;
+                fullScreen.isOn = true;
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////// MainCamera
+        {
+            if (PlayerPrefs.HasKey("FieldOfView"))
+            {
+                fieldOfView.value = PlayerPrefs.GetInt("FieldOfView");
+                textFOV.text = fieldOfView.value.ToString();
+            }
+            else
+            {
+                PlayerPrefs.SetFloat("FieldOfView", 80);
+                fieldOfView.value = 80;
+                textFOV.text = "80";
+            }
+        }
+    }

@@ -1,0 +1,88 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NeuronS : MonoBehaviour
+{
+    public Transform previousLayer;
+    public Transform mineLayer;
+    public Transform nextLayer;
+    int mineID, numberLayers;
+    int place;
+    List<GameObject> neuronsBefore = new List<GameObject>();
+    List<GameObject> neuronsAfter = new List<GameObject>();
+
+
+
+    private void Start()
+    {
+        mineID = gameObject.transform.parent.transform.GetSiblingIndex();
+        numberLayers = gameObject.transform.parent.transform.parent.transform.childCount;
+        Debug.Log(mineID);
+
+        mineLayer = gameObject.transform.parent.transform;
+       
+
+        if (mineID == 0)
+        {
+            nextLayer = gameObject.transform.parent.transform.parent.transform.GetChild(1);
+            place = 1;
+
+            for (int i = 0; i != nextLayer.childCount; i++)
+            {
+                //neuronsAfter = gameObject.transform.GetComponentsInChildren<Transform>();
+            }
+        }
+        else if (mineID == numberLayers - 1)
+        {
+            previousLayer = gameObject.transform.parent.transform.parent.transform.GetChild(mineID - 1);
+            place = 2;
+
+            for (int i = 0; i != previousLayer.childCount; i++)
+            {
+                
+            }
+        }
+        else
+        {
+            previousLayer = gameObject.transform.parent.transform.parent.transform.GetChild(mineID - 1);
+            nextLayer = gameObject.transform.parent.transform.parent.transform.GetChild(mineID + 1);
+            place = 3;
+
+            for (int i = 0; i != previousLayer.childCount; i++)
+            {
+                
+            }
+
+            for (int i = 0; i != nextLayer.childCount; i++)
+            {
+                
+            }
+
+
+        }
+
+        Transform[] t = gameObject.transform.parent.transform.parent.transform.GetChild(mineID + 1).GetComponentsInChildren<Transform>();
+        for (int i = 1; i != t.Length; i++)
+        {
+            neuronsAfter.Add(t[i].gameObject);
+        }
+        Debug.Log(neuronsAfter[0]);
+
+
+
+
+
+        // Debug.Log(mineLayer.childCount);
+
+
+        //Debug.Log(previousLayer.GetSiblingIndex() + " " + mineLayer.GetSiblingIndex() + " " + nextLayer.GetSiblingIndex());
+        //Debug.Log("до - " + previousLayer.name + "    сейчас - " + mineLayer.name + "    след - " + nextLayer.name);
+
+        //Debug.Log(previousLayer.GetSiblingIndex() + " " + mineLayer.GetSiblingIndex() );
+        //Debug.Log("до - " + previousLayer.name + "    сейчас - " + mineLayer.name );
+
+        //Debug.Log(place);
+    }   
+}

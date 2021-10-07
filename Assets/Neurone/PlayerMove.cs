@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
         move = posB - posA;
         move.y = 0;
 
-        Debug.Log("до " + Math.Abs(move.x));
+        ////////////////////////////////////////////////////////////////////////////////////////Debug.Log("до " + Math.Abs(move.x));
 
         if (Math.Abs(move.x) < 0.01)
         {
@@ -61,7 +61,7 @@ public class PlayerMove : MonoBehaviour
 
         move = move.normalized;
 
-        Debug.Log("после " + move.x);
+        //////////////////////////////////////////////////////////////////////////////////////////Debug.Log("после " + move.x);
         //rb.AddForce(move.x, posA.y, move.z);
 
         //Vector3 offset = new Vector3(move.x, posA.y, move.z) * Time.deltaTime;
